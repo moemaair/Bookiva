@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "115023577258",
+    "firebase_url": "https://bookivia-default-rtdb.firebaseio.com",
+    "project_id": "bookivia",
+    "storage_bucket": "bookivia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115023577258:android:1d50575283949f4787d0d3",
+        "android_client_info": {
+          "package_name": "com.moringaschool.bookiva"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115023577258-iih7r1gho4jfo4lgttr72a5arghigokf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD672mUR_innz0h-F__FAVIE3CslPbDFjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115023577258-iih7r1gho4jfo4lgttr72a5arghigokf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

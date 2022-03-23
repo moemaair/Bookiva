@@ -1,14 +1,16 @@
-package com.moringaschool.bookiva;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.moringaschool.bookiva.ui;
 
 import android.os.Bundle;
 
-public class ActivitySignup extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class ActivityDetail extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
     }
+
 }

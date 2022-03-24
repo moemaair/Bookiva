@@ -5,7 +5,7 @@
 
 ## Description
 
-```bash
+
 Bookivia :  Track your Readings, By using Bookiva!
 
 ###Screenshoots

@@ -11,11 +11,11 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BookClient {
+public class EditorsBookClient {
     private static Retrofit retrofit = null;
 
 
-    public static BookApi getBooks(){
+    public static BookApi getEditorsBookClient() {
         if (retrofit == null) {
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new Interceptor() {
@@ -37,6 +37,9 @@ public class BookClient {
 
         return retrofit.create(BookApi.class);//making request start!
     }
-
-
 }
+
+
+
+
+

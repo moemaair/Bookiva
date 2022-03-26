@@ -10,7 +10,8 @@ import retrofit2.http.Query;
 
 public interface BookApi {
     @GET("volumes")
-    Call<ResponseBooks> getBook(
-            @Query("q") String term
-    );
+    Call<ResponseBooks> getRecommendedBook(@Query("q") String recommendedBook);
+
+    @GET("volumes")
+    Call<ResponseBooks> geteditorsBook(@Query("q") String editorsBook);
 }

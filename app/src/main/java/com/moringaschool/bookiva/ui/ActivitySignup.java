@@ -31,6 +31,8 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
@@ -46,6 +48,8 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
 
         signupbtn.setOnClickListener(this);
         toLogIn.setOnClickListener(this);
+
+        createAuthStateListener();
 
     }
 
@@ -72,8 +76,7 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
 
         if (!validEmail || !validName || !validPassword) return;
 
-        mAuth.createUserWithEmailAndPassword(email_address, mPassword)
-                .addOnCompleteListener(this, task -> {
+        mAuth.createUserWithEmailAndPassword(email_address, mPassword).addOnCompleteListener(this,task -> {
             if (task.isSuccessful()) {
                 Log.d(TAG, "Authentication successful");
                 Toast.makeText(ActivitySignup.this, "log in successfully", Toast.LENGTH_SHORT).show();
@@ -132,19 +135,19 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
 
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthStateListener);
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        if (mAuthStateListener != null) {
-//            mAuth.removeAuthStateListener(mAuthStateListener);
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthStateListener != null) {
+            mAuth.removeAuthStateListener(mAuthStateListener);
+        }
+    }
 
 
 

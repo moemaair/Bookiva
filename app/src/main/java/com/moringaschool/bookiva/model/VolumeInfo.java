@@ -26,7 +26,7 @@ public class VolumeInfo {
     private String printType;
     @SerializedName("averageRating")
     @Expose
-    private int averageRating;
+    private double averageRating;
     @SerializedName("ratingsCount")
     @Expose
     private int ratingsCount;
@@ -85,7 +85,7 @@ public class VolumeInfo {
      * @param contentVersion
      * @param infoLink
      */
-    public VolumeInfo(String title, String publishedDate, String description, ReadingModes readingModes, int pageCount, String printType, int averageRating, int ratingsCount, String maturityRating, boolean allowAnonLogging, String contentVersion, PanelizationSummary panelizationSummary, ImageLinks imageLinks, String language, String previewLink, String infoLink, String canonicalVolumeLink) {
+    public VolumeInfo(String title, String publishedDate, String description, ReadingModes readingModes, int pageCount, String printType, double averageRating, int ratingsCount, String maturityRating, boolean allowAnonLogging, String contentVersion, PanelizationSummary panelizationSummary, ImageLinks imageLinks, String language, String previewLink, String infoLink, String canonicalVolumeLink) {
         super();
         this.title = title;
         this.publishedDate = publishedDate;
@@ -154,11 +154,11 @@ public class VolumeInfo {
         this.printType = printType;
     }
 
-    public int getAverageRating() {
+    public double getAverageRating() {
         return averageRating;
     }
 
-    public void setAverageRating(int averageRating) {
+    public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
     }
 

@@ -23,6 +23,7 @@
     <style name="Theme.Bookiva.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Bookiva.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="ActivitySearchBooks" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnSecondary</item>
     </style>

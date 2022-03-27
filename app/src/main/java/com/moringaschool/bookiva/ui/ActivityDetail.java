@@ -69,16 +69,30 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
                 if(response.isSuccessful()){
                     items = response.body().getItems();
 
-                    mAdapter = new Rv1_adapter(ActivityDetail.this, items, new Rv1_adapter.ItemClickListner() {
-                        @Override
-                        public void onItemClick(Items item) {
-                            OpenFragment();
-                        }
-                    });
+                    mAdapter = new Rv1_adapter(ActivityDetail.this, items);
 
                     layoutManager = new LinearLayoutManager(ActivityDetail.this, LinearLayoutManager.HORIZONTAL, true);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setAdapter(mAdapter);
+
+                    mAdapter.OnRecyclerViewClickListener(new Rv1_adapter.OnRecyclerViewClickListener() {
+                        @Override
+                        public void OnItemClick(int position) {
+
+                            Toast.makeText(ActivityDetail.this, "clicked", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ActivityDetail.this, ActivityMoreDetail.class);
+                            intent.putExtra("rate", items.get(position).getVolumeInfo().getRatingsCount());
+                            intent.putExtra("pageCount", items.get(position).getVolumeInfo().getPageCount());
+                            intent.putExtra("publishedDate", items.get(position).getVolumeInfo().getPublishedDate());
+                            intent.putExtra("bookTitle", items.get(position).getVolumeInfo().getTitle());
+                            intent.putExtra("ImageViewMoreDetail", items.get(position).getVolumeInfo().getImageLinks().getSmallThumbnail());
+                            intent.putExtra("descriptionOfBook", items.get(position).getVolumeInfo().getDescription());
+
+
+                            startActivity(intent);
+
+                        }
+                    });
 
                 }
                 else {

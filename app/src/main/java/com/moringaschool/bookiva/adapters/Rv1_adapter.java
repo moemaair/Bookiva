@@ -22,12 +22,19 @@ public class Rv1_adapter extends RecyclerView.Adapter<Rv1_adapter.myViewHolder>{
     Context mContext;
     List<Items> itemsList;
 
-    private ItemClickListner mItemClickListener; // create a var with the ItemClickListner interface object type
+    private OnRecyclerViewClickListener listener;
 
-    public Rv1_adapter(Context mContext, List<Items> itemsList, ItemClickListner mItemClickListener) {  // pass the variables param
+    public interface OnRecyclerViewClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void OnRecyclerViewClickListener (OnRecyclerViewClickListener listener){
+        this.listener = listener;
+    }
+    public Rv1_adapter(Context mContext, List<Items> itemsList) {  // pass the variables param
         this.mContext = mContext;
         this.itemsList = itemsList;
-        this.mItemClickListener = mItemClickListener;
+
     }
 
     @NonNull
@@ -35,7 +42,7 @@ public class Rv1_adapter extends RecyclerView.Adapter<Rv1_adapter.myViewHolder>{
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recommended_books_design, parent, false);
-        return new myViewHolder(view);
+        return new myViewHolder(view, listener);
 
     }
 
@@ -44,17 +51,17 @@ public class Rv1_adapter extends RecyclerView.Adapter<Rv1_adapter.myViewHolder>{
 //        Items items = itemsList.get(position);
 
         holder.bindBook(itemsList.get(position));
-        holder.itemView.setOnClickListener(view -> {
-            mItemClickListener.onItemClick(itemsList.get(position));
-        });
+//        holder.itemView.setOnClickListener(view -> {
+//            mItemClickListener.onItemClick(itemsList.get(position));
+//        });
 
 
     }
 
-    public interface ItemClickListner{ //interface used when an item in recyclerView is Clicked!
-        // one method thats will serve that purpose
-        void onItemClick(Items item);
-    }
+//    public interface ItemClickListner{ //interface used when an item in recyclerView is Clicked!
+//        // one method thats will serve that purpose
+//        void onItemClick(int position);
+//    }
 
     @Override
     public int getItemCount() {
@@ -66,10 +73,18 @@ public class Rv1_adapter extends RecyclerView.Adapter<Rv1_adapter.myViewHolder>{
          ImageView bookCover;
          TextView title;
 
-        public myViewHolder(@NonNull View itemView) {
+        public myViewHolder(@NonNull View itemView, OnRecyclerViewClickListener listener) {
             super(itemView);
             bookCover = itemView.findViewById(R.id.bookCover);
 //            title = itemView.findViewById(R.id.titles);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null && getAbsoluteAdapterPosition()!=RecyclerView.NO_POSITION){
+                        listener.OnItemClick(getAbsoluteAdapterPosition());
+                    }
+                }
+            });
         }
 
         public void bindBook(Items mItem) {
